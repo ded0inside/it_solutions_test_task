@@ -1,0 +1,41 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}Создание бегущей строки{% endblock %}
+
+{% block body%}
+    <aside>
+        <h3>История Ваших запросов</h3>
+        {% if subtitles %}
+            {% for el in subtitles %}
+                <div class="history_container">
+                        <ul>
+                            <li><b>Текст:</b> "{{ el.text }}"</li>
+                            <li><b>Размер шрифта:</b> {{ el.font_size }}</li>
+                            <li><b>Цвет шрифта:</b> ({{ el.rf }}, {{ el.gf }}, {{ el.bf }})</li>
+                            <li><b>Цвет фона:</b> ({{ el.rb }}, {{ el.gb }}, {{ el.bb }})</li>
+                        </ul>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>История пуста</p>
+        {% endif %}
+    </aside>
+    <main>
+        <h1>Добро пожаловать в создатель бегущей строки</h1>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form_container">
+                <p><b>Текст:</b> {{ form.text }}</p>
+                <p><b>Размер шрифта:</b> {{ form.font_size }}</p>
+                <p>
+                    <b>Цвет шрифта:</b> ( {{ form.rf }} , {{ form.gf }} , {{ form.bf }} )
+                </p>
+                <p>
+                    <b>Цвет фона:</b> ( {{ form.rb }} , {{ form.gb }} , {{ form.bb }} )
+                </p>
+                <span>{{ error }}</span>
+                <button type="submit" class="btn btn-warning">Создать видео</button>
+            </div>
+        </form>
+    </main>
+{% endblock %}
