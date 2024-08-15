@@ -21,8 +21,9 @@ def create_frame(text, offset, background_color, font_color, font_size):
     draw = ImageDraw.Draw(image)
 
     # Настройка шрифт
-    font = ImageFont.truetype("Arial", font_size)
-
+    # font = ImageFont.truetype("Arial", font_size)  # Для обычного запуска раскоментируете эту строчку и закоментируите следущую
+    font = ImageFont.truetype("/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf", font_size)  # Нужно для колаба
+    
     # Вычисление ширины текста
     bbox = draw.textbbox((0, 0), text, font=font)
     # text_width = bbox[2] - bbox[0]  # Пока не используется, пофиксим в будущем
@@ -43,6 +44,10 @@ def create_subtitle_video(text, font="Arial", font_size=FONT_SIZE, font_color=(2
     '''Создает видео с бегущей строкой, возвращает путь до файла в папке media'''
     global IMAGE_WIDTH, IMAGE_HEIGHT, FPS
 
+    # Настройка шрифт
+    # font = ImageFont.truetype("Arial", font_size)  # Для обычного запуска раскоментируете эту строчку и закоментируите следущую
+    font = ImageFont.truetype("/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf", font_size)  # Нужно для колаба
+                              
     # Создание одного кадра для получения ширины текста
     bbox = ImageDraw.Draw(Image.new('RGB', (IMAGE_WIDTH, IMAGE_HEIGHT))).textbbox((0, 0), text,
                                                                                   font=ImageFont.truetype(font,
