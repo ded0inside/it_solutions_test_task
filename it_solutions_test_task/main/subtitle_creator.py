@@ -50,8 +50,7 @@ def create_subtitle_video(text, font="Arial", font_size=FONT_SIZE, font_color=(2
                               
     # Создание одного кадра для получения ширины текста
     bbox = ImageDraw.Draw(Image.new('RGB', (IMAGE_WIDTH, IMAGE_HEIGHT))).textbbox((0, 0), text,
-                                                                                  font=ImageFont.truetype(font,
-                                                                                                          font_size))
+                                                                                  font=font)
     # Создание служебных переменных
     frames = []  # Массив кадров для видео
     # offset = IMAGE_WIDTH  # Начальная позиция текста за пределами экрана
